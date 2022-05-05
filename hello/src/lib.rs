@@ -10,7 +10,7 @@ use solana_program::{
 
 /// Define the type of state stored in accounts
 #[derive(BorshSerialize, BorshDeserialize, Debug)]
-pub struct GreetingAccount {
+pub struct AccountData {
     /// number of greetings
     pub counter: u32,
 }
@@ -39,11 +39,11 @@ pub fn process_instruction(
     }
 
     // Increment and store the number of times the account has been greeted
-    let mut greeting_account = GreetingAccount::try_from_slice(&account.data.borrow())?;
-    greeting_account.counter += 1;
-    greeting_account.serialize(&mut &mut account.data.borrow_mut()[..])?;
+    let mut data = AccountData::try_from_slice(&account.data.borrow())?;
+    data.counter += 1;
+    data.serialize(&mut &mut account.data.borrow_mut()[..])?;
 
-    msg!("Greeted {} time(s)!", greeting_account.counter);
+    msg!("Greeted {} time(s)!", data.counter);
 
     Ok(())
 }
