@@ -16,7 +16,7 @@
 * [Create a Solana dApp from scratch](https://lorisleiva.com/create-a-solana-dapp-from-scratch)
   
 # dApp Scaffold 
-  https://github.com/solana-labs/dapp-scaffold
+*  [Solana dApp Scaffold Next](https://github.com/solana-labs/dapp-scaffold)
   
 ## References
 * https://github.com/solana-labs/solana-program-library
