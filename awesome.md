@@ -7,3 +7,10 @@
 
 # NFTs
   * 
+
+
+# Other References
+
+ * [Awesome Solana](https://github.com/avareum/awesome-solana)
+ * [Awesome Solana NFTS](https://github.com/ilmoi/awesome-solana-nfts)
+ * [SolanaProject Index](https://solanaproject.com/)
