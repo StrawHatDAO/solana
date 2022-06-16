@@ -6,6 +6,8 @@
   * [Staking](https://github.com/step-finance/step-staking)
 
 # NFTs
+  * [Candy Machine](https://github.com/metaplex-foundation/metaplex/tree/master/js/packages/candy-machine-ui)
+  * [Sugar (Candy Machine using Rust)](https://github.com/metaplex-foundation/sugar)
   * 
 
 
