@@ -17,6 +17,8 @@
   * []()
 
 # Dao
+  * [Governance Program Library](https://github.com/solana-labs/governance-program-library)
+  * [Governance UI](https://github.com/solana-labs/governance-ui)
   * [Squads](https://github.com/squads-dapp/program)
   * [Tribeca](https://github.com/TribecaHQ/tribeca)
 
