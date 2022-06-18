@@ -11,8 +11,18 @@
   * [Metaplex Token Entangler](https://github.com/metaplex-foundation/metaplex-program-library/tree/master/token-entangler)
   * [Candy Machine](https://github.com/metaplex-foundation/metaplex/tree/master/js/packages/candy-machine-ui)
   * [Sugar (Candy Machine using Rust)](https://github.com/metaplex-foundation/sugar)
+  * [Solana NFT Marketplace JS Library](https://github.com/LIQNFT/candy-shop)
 
-# 
+# Web3 
+  * []()
+
+# Dao
+  * [Squads](https://github.com/squads-dapp/program)
+  * [Tribeca](https://github.com/TribecaHQ/tribeca)
+
+
+# Gaming
+  * []()
 
 # Other References
 
