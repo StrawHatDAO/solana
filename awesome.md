@@ -14,7 +14,7 @@
   * [Solana NFT Marketplace JS Library](https://github.com/LIQNFT/candy-shop)
 
 # Web3 
-  * []()
+  * [Crowdfunding using Fractions](https://github.com/edmundjeevan/ArtyFracts)
 
 # Dao
   * [Governance Program Library](https://github.com/solana-labs/governance-program-library)
