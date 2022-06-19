@@ -26,7 +26,7 @@
   * [Governance UI](https://github.com/solana-labs/governance-ui)
   * [Squads](https://github.com/squads-dapp/program)
   * [Tribeca](https://github.com/TribecaHQ/tribeca)
-  * 
+  * [Gold.xyz](https://github.com/agoraxyz/gold-rust)
 
 
 # Gaming
