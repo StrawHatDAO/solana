@@ -15,19 +15,28 @@
 
 # Web3 
   * [Crowdfunding using Fractions](https://github.com/edmundjeevan/ArtyFracts)
+  * [SolBond](https://github.com/araekiel/solbond)
+  * [See You Then](https://github.com/zicklag/see-you-then)
+  * [Messaging App](https://github.com/RiteshPuvvada/Simple-message-app-on-solana)
+  * [File Sharing](https://github.com/atharmohammad/Solana-File-Sharing-System)
+  * [Twitter for web3](https://github.com/lorisleiva/solana-twitter)
 
 # Dao
   * [Governance Program Library](https://github.com/solana-labs/governance-program-library)
   * [Governance UI](https://github.com/solana-labs/governance-ui)
   * [Squads](https://github.com/squads-dapp/program)
   * [Tribeca](https://github.com/TribecaHQ/tribeca)
+  * 
 
 
 # Gaming
-  * []()
+  * [Unity Wallet](https://github.com/allartprotocol/unity-solana-wallet)
+  * [SolGlow](https://github.com/paulpierre/solglow-hackathon)
+  * [Solana Game SDK](https://github.com/thetardigrades/SolanaGameServer-SDK)
 
 # Other References
 
  * [Awesome Solana](https://github.com/avareum/awesome-solana)
  * [Awesome Solana NFTS](https://github.com/ilmoi/awesome-solana-nfts)
  * [SolanaProject Index](https://solanaproject.com/)
+ * [Web UI Kit](https://github.com/web3ui/web3uikit)
