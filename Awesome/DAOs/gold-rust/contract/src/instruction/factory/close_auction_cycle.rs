@@ -1,0 +1,95 @@
+use super::*;
+
+pub struct CloseAuctionCycleArgs {
+    pub payer_pubkey: Pubkey,
+    pub auction_owner_pubkey: Pubkey,
+    pub top_bidder_pubkey: Option<Pubkey>,
+    pub auction_id: AuctionId,
+    pub next_cycle_num: u64,
+    pub token_type: TokenType,
+    pub existing_token_mint: Option<Pubkey>,
+}
+
+pub fn close_auction_cycle(args: &CloseAuctionCycleArgs) -> Instruction {
+    let (auction_root_state_pubkey, _) =
+        Pubkey::find_program_address(&auction_root_state_seeds(&args.auction_id), &crate::ID);
+    let (auction_pool_pubkey, _) = Pubkey::find_program_address(&auction_pool_seeds(), &crate::ID);
+    let (secondary_pool_pubkey, _) =
+        Pubkey::find_program_address(&secondary_pool_seeds(), &crate::ID);
+
+    let (contract_pda, _) = Pubkey::find_program_address(&contract_pda_seeds(), &crate::ID);
+
+    let top_bidder = if let Some(bidder) = args.top_bidder_pubkey {
+        bidder
+    } else {
+        args.auction_owner_pubkey
+    };
+
+    let (current_auction_cycle_state_pubkey, _) = Pubkey::find_program_address(
+        &auction_cycle_state_seeds(
+            &auction_root_state_pubkey,
+            &args.next_cycle_num.to_le_bytes(),
+        ),
+        &crate::ID,
+    );
+    let (next_auction_cycle_state_pubkey, _) = Pubkey::find_program_address(
+        &auction_cycle_state_seeds(
+            &auction_root_state_pubkey,
+            &(args.next_cycle_num + 1).to_le_bytes(),
+        ),
+        &crate::ID,
+    );
+
+    let mut accounts = vec![
+        AccountMeta::new(args.payer_pubkey, true),
+        AccountMeta::new(auction_pool_pubkey, false),
+        AccountMeta::new(secondary_pool_pubkey, false),
+        AccountMeta::new(auction_root_state_pubkey, false),
+        AccountMeta::new(current_auction_cycle_state_pubkey, false),
+        AccountMeta::new(next_auction_cycle_state_pubkey, false),
+        AccountMeta::new_readonly(top_bidder, false),
+        AccountMeta::new_readonly(contract_pda, false),
+        AccountMeta::new_readonly(RENT_ID, false),
+        AccountMeta::new_readonly(SYS_ID, false),
+        AccountMeta::new_readonly(TOKEN_ID, false),
+    ];
+
+    let mut token_accounts = match args.token_type {
+        TokenType::Nft => {
+            let master_pdas = EditionPda::new(EditionType::Master, &args.auction_id);
+
+            vec![
+                AccountMeta::new_readonly(META_ID, false),
+                AccountMeta::new(master_pdas.edition, false),
+                AccountMeta::new(master_pdas.metadata, false),
+                AccountMeta::new_readonly(master_pdas.mint, false),
+                AccountMeta::new_readonly(master_pdas.holding, false),
+            ]
+        }
+        TokenType::Token => {
+            let mint_pubkey = args.existing_token_mint.unwrap_or_else(|| {
+                Pubkey::find_program_address(&token_mint_seeds(&args.auction_id), &crate::ID).0
+            });
+            let (token_holding_pubkey, _) = Pubkey::find_program_address(
+                &token_holding_seeds(&mint_pubkey, &top_bidder),
+                &crate::ID,
+            );
+            vec![
+                AccountMeta::new(mint_pubkey, false),
+                AccountMeta::new(token_holding_pubkey, false),
+            ]
+        }
+    };
+
+    accounts.append(&mut token_accounts);
+
+    let instruction = AuctionInstruction::CloseAuctionCycle {
+        id: args.auction_id,
+    };
+
+    Instruction {
+        program_id: crate::ID,
+        accounts,
+        data: instruction.try_to_vec().unwrap(),
+    }
+}

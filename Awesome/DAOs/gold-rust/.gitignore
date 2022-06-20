@@ -1,0 +1,16 @@
+# Rust
+Cargo.lock
+config.toml
+**/target
+
+# Solana
+.coderrect/
+/test-ledger
+*.log
+
+# Docker
+bin/
+bot.json
+
+# Mac
+**/.DS_Store
